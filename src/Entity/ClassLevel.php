@@ -18,7 +18,7 @@ class ClassLevel
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 
-    #[ORM\ManyToMany(targetEntity: Professor::class, mappedBy: 'classLevels')]
+    #[ORM\ManyToMany(targetEntity: Professor::class, mappedBy: 'classLevels', fetch: 'EAGER')]
     private Collection $professors;
 
     #[ORM\OneToMany(mappedBy: 'classLevel', targetEntity: Evaluation::class, orphanRemoval: true)]

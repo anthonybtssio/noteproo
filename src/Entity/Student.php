@@ -13,7 +13,7 @@ class Student extends User
     #[ORM\OneToMany(mappedBy: 'student', targetEntity: Grade::class, orphanRemoval: true)]
     private Collection $grades;
 
-    #[ORM\ManyToOne(inversedBy: 'students')]
+    #[ORM\ManyToOne(fetch: 'EAGER', inversedBy: 'students')]
     #[ORM\JoinColumn(nullable: true)]
     private ?ClassLevel $classLevel = null;
 

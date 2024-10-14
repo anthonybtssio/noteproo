@@ -21,7 +21,7 @@ class Subject
     #[ORM\OneToMany(mappedBy: 'subject', targetEntity: Evaluation::class, orphanRemoval: true)]
     private Collection $evaluations;
 
-    #[ORM\ManyToMany(targetEntity: Professor::class, mappedBy: 'subjects', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Professor::class, mappedBy: 'subjects', cascade: ['persist', 'remove'], fetch: 'EAGER')]
     private Collection $professors;
 
     public function __construct()
