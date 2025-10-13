@@ -18,7 +18,6 @@ class ChangePasswordController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function changePassword(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $form = $this->createForm(ChangePasswordFormType::class);
