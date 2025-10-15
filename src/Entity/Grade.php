@@ -28,6 +28,9 @@ class Grade
     #[ORM\JoinColumn(nullable: false)]
     private ?Student $student = null;
 
+    #[ORM\Column]
+    private ?float $moyenne = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +80,18 @@ class Grade
     public function setStudent(?Student $student): static
     {
         $this->student = $student;
+
+        return $this;
+    }
+
+    public function getMoyenne(): ?float
+    {
+        return $this->moyenne;
+    }
+
+    public function setMoyenne(float $moyenne): static
+    {
+        $this->moyenne = $moyenne;
 
         return $this;
     }

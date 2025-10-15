@@ -40,6 +40,13 @@ class Evaluation
     #[ORM\OneToMany(mappedBy: 'evaluation', targetEntity: Grade::class, orphanRemoval: true)]
     private Collection $grades;
 
+    #[ORM\Column]
+    private ?float $moyenne = null;
+
+
+
+
+
     public function __construct()
     {
         $this->grades = new ArrayCollection();
@@ -49,6 +56,8 @@ class Evaluation
     {
         return $this->id;
     }
+
+
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -114,7 +123,16 @@ class Evaluation
     {
         return $this->classLevel;
     }
+    function moyenne($liste_nombres) {
+        $nb = 0; $somme = 0;
+        if (is_array($liste_nombres)) foreach($liste_nombres as $nombre){
+            $nb += empty($nombre) ? 0 : 1;
+            $somme += floatval ($nombre);
+        }
+        return ($somme/$nb);
+    }
 
+//utilisation de la fonction pour calculer la moyenne
     public function setClassLevel(?ClassLevel $classLevel): static
     {
         $this->classLevel = $classLevel;
@@ -160,5 +178,17 @@ class Evaluation
             }
         }
         return null;
+    }
+
+    public function getMoyenne(): ?float
+    {
+        return $this->moyenne;
+    }
+
+    public function setMoyenne(float $moyenne): static
+    {
+        $this->moyenne = $moyenne;
+
+        return $this;
     }
 }
