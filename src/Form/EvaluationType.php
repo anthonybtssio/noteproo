@@ -61,6 +61,16 @@ class EvaluationType extends AbstractType
                     return $er->findByProfessor($prof);
                 },
             ])
+            ->add('categories', EntityType::class, [
+                'class' => ClassLevel::class,
+                'label' => 'Categories',
+                'choice_label' => 'label',
+                'expanded' => false,
+                'multiple' => false,
+                'query_builder' => function(ClassLevelRepository $er) use($prof){
+                    return $er->findByProfessor($prof);
+                },
+            ])
         ;
     }
 
