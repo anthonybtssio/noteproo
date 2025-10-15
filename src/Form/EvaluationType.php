@@ -67,9 +67,11 @@ class EvaluationType extends AbstractType
                 'choice_label' => 'label',
                 'expanded' => false,
                 'multiple' => false,
-                'DS' => 1,
-                'TP' => 2,
-                'BTS blanc' => 3,
+                'attr' => [
+                    'DS' => 1,
+                    'TP' => 2,
+                    'BTS blanc' => 3,
+                ],
                 'query_builder' => function(ClassLevelRepository $er) use($prof){
                     return $er->findByProfessor($prof);
                 },

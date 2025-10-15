@@ -43,8 +43,7 @@ class Evaluation
     #[ORM\Column]
     private ?float $moyenne = null;
 
-
-
+    Private $categories = null;
 
 
     public function __construct()
@@ -136,6 +135,20 @@ class Evaluation
     public function setClassLevel(?ClassLevel $classLevel): static
     {
         $this->classLevel = $classLevel;
+
+        return $this;
+    }
+
+
+
+    public function getCategories(): ?Subject
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?categories $categories): static
+    {
+        $this->Categories = $categories;
 
         return $this;
     }
