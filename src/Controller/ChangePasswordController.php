@@ -14,8 +14,8 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ChangePasswordController extends AbstractController
 {
-    #[Route('/changepassword', name: 'user_change_password', methods: ['GET', 'POST'])]
-    #[IsGranted('ROLE_USER')]
+    #[Route ('/changepassword', name: 'user_change_password', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function changePassword(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
         /** @var \App\Entity\User $user */
