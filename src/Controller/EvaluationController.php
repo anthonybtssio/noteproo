@@ -105,6 +105,8 @@ class EvaluationController extends AbstractController
                         $grade->setEvaluation($evaluation);
                         $grade->setStudent($student);
                         $evaluation->addGrade($grade);
+                        $moyenne = 0;
+                        $moyenne->getMoyenne()->setMoyenne($grade->getMoyenne());
                     }
                     $grade->setGrade($value);
                 } else {
